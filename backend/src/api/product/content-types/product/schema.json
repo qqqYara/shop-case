@@ -1,0 +1,123 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": "Product shown on a product card. Price is the full price. Sale price is calculated from discount."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "volume": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "badges": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.badge"
+    },
+    "showFormulas": {
+      "type": "enumeration",
+      "enum": ["enable", "disable"],
+      "default": "disable"
+    },
+    "formulas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.option",
+      "conditions": {
+        "visible": {
+          "==": [{ "var": "showFormulas" }, "enable"]
+        }
+      }
+    },
+    "showSkinType": {
+      "type": "enumeration",
+      "enum": ["enable", "disable"],
+      "default": "disable"
+    },
+    "skinTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.option",
+      "conditions": {
+        "visible": {
+          "==": [{ "var": "showSkinType" }, "enable"]
+        }
+      }
+    },
+    "showSetInclude": {
+      "type": "enumeration",
+      "enum": ["enable", "disable"],
+      "default": "disable"
+    },
+    "setIncludes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.option",
+      "conditions": {
+        "visible": {
+          "==": [{ "var": "showSetInclude" }, "enable"]
+        }
+      }
+    },
+    "showChooseFinish": {
+      "type": "enumeration",
+      "enum": ["enable", "disable"],
+      "default": "disable"
+    },
+    "finishes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.option",
+      "conditions": {
+        "visible": {
+          "==": [{ "var": "showChooseFinish" }, "enable"]
+        }
+      }
+    },
+    "showSize": {
+      "type": "enumeration",
+      "enum": ["enable", "disable"],
+      "default": "disable"
+    },
+    "sizes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.option",
+      "conditions": {
+        "visible": {
+          "==": [{ "var": "showSize" }, "enable"]
+        }
+      }
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "discount": {
+      "type": "integer",
+      "min": 0,
+      "max": 100
+    }
+  }
+}

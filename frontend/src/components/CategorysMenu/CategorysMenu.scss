@@ -1,0 +1,69 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.categories-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+  background: $color-neutral-100;
+  border: 1px solid $color-neutral-200;
+  border-radius: 200px;
+  @include shadow-card-s;
+  @include mq("tablet") {
+    gap: 24px;
+  }
+
+  @include mq("desktop", max) {
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+  }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-corner {
+    @include mq("desktop", max) {
+      background: transparent;
+      background-color: transparent;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    @include mq("desktop", max) {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.categories-menu__tab {
+  padding: 12px;
+  color: $color-neutral-900;
+  font-family: $main-regular;
+  font-weight: $font-weight-regular;
+  font-size: 18px;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: all 0.5s ease;
+  @include mq("laptop") {
+    padding: 24px 32px;
+    font-family: $main-bold;
+    font-weight: $font-weight-bold;
+  }
+  &--active {
+    font-family: $main-medium;
+    font-weight: $font-weight-medium;
+    color: $color-tab-label;
+    background: $color-neutral-900;
+    border-radius: 200px;
+    @include shadow-card-s;
+    @include mq("laptop") {
+      font-family: $main-bold;
+      font-weight: $font-weight-bold;
+    }
+  }
+}

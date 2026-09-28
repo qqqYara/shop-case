@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.announcement {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 44px;
+  padding: 10px 16px;
+  background: $color-neutral-900;
+  @include shadow-card-s;
+  z-index: 26;
+  @include mq("tablet") {
+    min-width: 458px;
+    width: auto;
+    padding-inline: 20px;
+  }
+}
+
+.announcement__text {
+  grid-area: 1 / 1;
+  color: $color-neutral-100;
+  font-family: $main-regular;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  animation: announcement-in 0.45s ease;
+
+  @include mq("tablet") {
+    font-family: $main-bold;
+    font-weight: $font-weight-bold;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.announcement__text--measure {
+  visibility: hidden;
+  pointer-events: none;
+  animation: none;
+}
+
+@keyframes announcement-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

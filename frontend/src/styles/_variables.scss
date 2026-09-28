@@ -1,0 +1,73 @@
+//colors
+$color-black: #000000;
+$color-white: #ffffff;
+
+// Neutral
+$color-neutral-100: #ffffff;
+$color-neutral-200: #f3f5f5;
+$color-neutral-250: #e3e8e9;
+$color-neutral-300: #d9e1e2;
+$color-neutral-400: #bcc9c5;
+$color-neutral-500: #9aada7;
+$color-neutral-600: #bfbfbf;
+$color-neutral-700: #858585;
+$color-neutral-800: #505050;
+$color-neutral-900: #212721;
+
+// Brand
+$color-brand-100: #e5f7ed;
+$color-brand-200: #d1f0e0;
+$color-brand-400: #92dbb6;
+$color-brand-500: #63cc96;
+$color-brand-900: #1b3829;
+
+// Accents
+$color-accent-teal: #00c3d0;
+$color-accent-cyan: #00c0e8;
+
+// Unnamed (layout-only)
+$color-hero-bg: #fdfdfd;
+$color-tab-label: #fcfcfc;
+$color-title-pill-end: #f5fcfd;
+$color-essentials-title: #2b2b2b;
+$color-step-border: #32664b;
+$color-step-body-mobile: #565b5a;
+$color-hero-blur-blue: #dae8ff;
+$color-hero-blur-pink: #ffc0c0;
+$color-protect-pink-1: #d97a81;
+$color-protect-pink-2: #eca3b3;
+$color-protect-pink-3: #fecbe4;
+$color-shadow: #9cb6ba;
+
+//fonts
+$main-extralight: "Manrope-ExtraLight";
+$main-light: "Manrope-Light";
+$main-regular: "Manrope-Regular";
+$main-medium: "Manrope-Medium";
+$main-semibold: "Manrope-SemiBold";
+$main-bold: "Manrope-Bold";
+$main-extrabold: "Manrope-ExtraBold";
+
+$secondary-regular: "Caveat-Regular";
+$secondary-medium: "Caveat-Medium";
+$secondary-semibold: "Caveat-SemiBold";
+$secondary-bold: "Caveat-Bold";
+
+//font weights
+$font-weight-extralight: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+//media
+$breakpoints: (
+  "phone-se": 375px,
+  "tablet": 768px,
+  "tablet-wide": 992px,
+  "laptop": 1024px,
+  "desktop": 1200px,
+  "desktop-wide": 1440px,
+);

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_product_options",
+  "info": {
+    "displayName": "Option",
+    "icon": "bulletList",
+    "description": "A selectable option on a product card"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "discount": {
+      "type": "integer",
+      "min": 0,
+      "max": 100
+    }
+  }
+}

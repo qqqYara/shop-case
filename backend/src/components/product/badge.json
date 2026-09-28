@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_product_badges",
+  "info": {
+    "displayName": "Badge",
+    "icon": "priceTag",
+    "description": "A badge shown on a product card"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

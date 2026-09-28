@@ -1,0 +1,151 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.how-it-works {
+  overflow-x: clip;
+  padding: 137px 14px 35px;
+
+  @include mq("desktop") {
+    padding: 160px 0 45px;
+  }
+}
+
+.how-it-works__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 40px;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+
+  @include mq("desktop") {
+    gap: 80px;
+    padding-inline: 20px;
+  }
+
+  @include mq("desktop-wide") {
+    padding-inline: 0;
+  }
+}
+
+.how-it-works__title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  flex-shrink: 0;
+  width: max-content;
+  gap: 12px;
+
+  @include mq("laptop") {
+    padding: 24px 80px;
+    border-radius: 200px;
+    background: linear-gradient(
+      180deg,
+      $color-neutral-200 11.49%,
+      $color-title-pill-end 104.59%
+    );
+    box-shadow:
+      -12px -40px 15px rgba($color-shadow, 0.1),
+      -20px 40px 15px rgba($color-shadow, 0.06),
+      8px 26px 7px rgba($color-shadow, 0.09),
+      12px 20px 8px rgba($color-shadow, 0.09),
+      -8px 12px 6px rgba($color-shadow, 0.09),
+      1px 2px 2px rgba($color-shadow, 0.08);
+  }
+
+  @include mq("desktop") {
+    padding: 28px 160px;
+  }
+}
+
+.how-it-works__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: $color-neutral-900;
+  font-family: $main-regular;
+  font-weight: $font-weight-regular;
+  font-size: 30px;
+  line-height: 1;
+  white-space: nowrap;
+
+  @include mq("laptop") {
+    font-size: 32px;
+    font-family: $main-bold;
+    font-weight: $font-weight-bold;
+  }
+
+  @include mq("desktop") {
+    font-size: 38px;
+  }
+}
+
+.how-it-works__title-accent {
+  color: $color-brand-500;
+}
+
+.how-it-works__star {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+
+  @include mq("laptop") {
+    width: 28px;
+    height: 28px;
+  }
+
+  @include mq("desktop") {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.how-it-works__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+
+  @include mq("laptop") {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .steps {
+    @include mq("desktop") {
+      flex: 0 0 500px;
+      width: 500px;
+      max-width: 500px;
+    }
+  }
+
+  .categories {
+    @include mq("laptop") {
+      position: sticky;
+      top: var(--steps-stack-top, 40px);
+    }
+  }
+}
+
+.how-it-works__subtitle {
+  max-width: 225px;
+  margin: 0;
+  color: $color-neutral-800;
+  font-size: 18px;
+  font-family: $main-medium;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  text-align: center;
+
+  @include mq("laptop") {
+    max-width: none;
+    font-family: $main-bold;
+    font-weight: $font-weight-bold;
+    white-space: nowrap;
+  }
+}

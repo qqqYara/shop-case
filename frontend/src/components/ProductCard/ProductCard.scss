@@ -1,0 +1,405 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 160px;
+  padding: 4px 4px 12px;
+  background: $color-neutral-100;
+  border: 1px solid $color-neutral-200;
+  border-radius: 12px;
+  @include shadow-card-s;
+  @include mq("tablet") {
+    gap: 16px;
+    width: 264px;
+    height: 632px;
+    padding: 8px;
+  }
+}
+
+.product-card__media {
+  position: relative;
+  flex-shrink: 0;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 12px;
+
+  @include mq("tablet") {
+    height: 248px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.product-card__badges {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include mq("tablet") {
+    top: 11px;
+    left: 11px;
+  }
+
+  li {
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: $color-neutral-900;
+    color: $color-neutral-100;
+    font-family: $main-regular;
+    font-size: 16px;
+    font-weight: $font-weight-regular;
+    line-height: 1.2;
+    @include shadow-card-s;
+    @include mq("tablet") {
+      padding: 8px 12px;
+      font-family: $main-bold;
+      font-weight: $font-weight-bold;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+  }
+}
+
+.product-card__favorite {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 200px;
+  background: $color-neutral-200;
+  cursor: pointer;
+
+  @include mq("tablet") {
+    right: 7px;
+    bottom: 7px;
+    width: 44px;
+    height: 44px;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: $color-neutral-900;
+    stroke-width: 0.6875;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    @include mq("tablet") {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &.is-saved svg {
+    fill: $color-neutral-900;
+  }
+}
+
+.product-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  width: 100%;
+
+  @include mq("tablet") {
+    justify-content: space-between;
+    gap: 0;
+    padding-bottom: 4px;
+  }
+}
+
+.product-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-card__title {
+  margin: 0;
+  overflow: hidden;
+  color: $color-neutral-900;
+  font-family: $main-medium;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  min-height: 58px;
+
+  @include mq("tablet") {
+    min-height: unset;
+    font-family: $main-bold;
+    font-size: 18px;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.product-card__details .product-card__group {
+  display: none;
+
+  @include mq("tablet") {
+    display: block;
+  }
+}
+
+.product-card__group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  legend {
+    margin-bottom: 4px;
+    padding: 0;
+    color: $color-neutral-700;
+    font-family: $main-bold;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+}
+
+.product-card__options {
+  display: flex;
+  gap: 4px;
+
+  button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    height: 40px;
+    padding: 6px;
+    border: 1px solid $color-neutral-600;
+    border-radius: 8px;
+    background: $color-neutral-100;
+    color: $color-neutral-900;
+    font-family: $main-bold;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    @include shadow-card-s;
+
+    &.is-selected {
+      background: $color-neutral-400;
+      color: $color-brand-900;
+    }
+  }
+
+  &--chips {
+    button {
+      padding: 6px 12px;
+    }
+  }
+  img {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+}
+
+.product-card__options--stack {
+  flex-direction: column;
+
+  button {
+    width: 100%;
+  }
+}
+
+.product-card__options--chips {
+  flex-wrap: wrap;
+}
+
+.product-card__options--rows {
+  flex-direction: column;
+
+  button {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.product-card__option-discount {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  padding: 4px;
+  border-radius: 200px;
+  background: $color-neutral-900;
+  color: $color-neutral-100;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  transform: rotate(-3deg);
+}
+
+.product-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include mq("tablet") {
+    gap: 6px;
+    padding-top: 12px;
+  }
+
+  .button--add-to-cart {
+    @include mq("tablet") {
+      order: 1;
+    }
+  }
+}
+
+.product-card__price {
+  position: relative;
+  padding: 4px 0;
+  border-radius: 12px;
+
+  @include mq("tablet") {
+    padding: 4px 24px;
+    border-radius: 30px;
+    background: $color-neutral-200;
+  }
+}
+
+.product-card__price-was {
+  display: none;
+  margin: 0;
+  color: $color-neutral-700;
+  font-family: $main-bold;
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-decoration: line-through;
+
+  @include mq("tablet") {
+    display: block;
+  }
+}
+
+.product-card__price-now {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: $color-neutral-900;
+  font-family: $main-bold;
+  font-weight: $font-weight-bold;
+
+  gap: 2px;
+  font-family: $main-medium;
+  font-weight: $font-weight-medium;
+
+  @include mq("tablet") {
+    gap: 6px;
+    font-family: $main-bold;
+    font-weight: $font-weight-bold;
+  }
+
+  span,
+  strong {
+    font-size: 16px;
+    font-weight: $font-weight-medium;
+    line-height: 1.2;
+  }
+
+  span {
+    @include mq("tablet") {
+      font-size: 16px;
+      line-height: 1.1;
+    }
+  }
+
+  strong {
+    @include mq("tablet") {
+      font-size: 18px;
+      font-weight: $font-weight-bold;
+      line-height: 1.2;
+    }
+  }
+}
+
+.product-card__discount {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding: 4px 8px;
+  font-family: $main-medium;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  border-radius: 200px;
+  background: $color-neutral-900;
+  color: $color-neutral-100;
+  font-family: $main-bold;
+  font-size: 16px;
+  font-weight: $font-weight-bold;
+  line-height: 1.1;
+  transform: translateY(-50%) rotate(-3deg);
+
+  @include mq("tablet") {
+    right: 24px;
+    padding: 6px 8px;
+    font-family: $main-bold;
+    font-weight: $font-weight-bold;
+    line-height: 1.1;
+  }
+}
+
+.product-card__details-link {
+  align-self: flex-start;
+  padding: 0 0 1px;
+  border: 0;
+  border-bottom: 0.7px solid $color-neutral-900;
+  border-radius: 0;
+  background: none;
+  color: $color-neutral-900;
+  font-family: $main-regular;
+  font-size: 14px;
+  font-weight: $font-weight-regular;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+
+  @include mq("tablet") {
+    order: 2;
+    align-self: stretch;
+    width: 100%;
+    padding: 12px 24px;
+    border-bottom: 0;
+    border-radius: 100px;
+    background: $color-neutral-200;
+    font-family: $main-bold;
+    font-size: 16px;
+    font-weight: $font-weight-bold;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: left;
+  }
+}
+

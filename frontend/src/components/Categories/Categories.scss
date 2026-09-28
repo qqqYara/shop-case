@@ -1,0 +1,185 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.categories-popup {
+  display: contents;
+
+  @include mq("laptop", max) {
+    display: none;
+  }
+
+  &.is-open {
+    @include mq("laptop", max) {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 16px 0 0;
+      overflow: hidden;
+      background: $color-neutral-100;
+    }
+  }
+}
+
+.categories-popup__body {
+  display: contents;
+
+  .categories-popup.is-open & {
+    @include mq("laptop", max) {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0;
+      padding: 0 14px 16px;
+      overflow: auto;
+    }
+  }
+}
+
+.categories-popup__steps {
+  display: none;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0 14px 32px;
+
+  .categories-popup.is-open & {
+    @include mq("laptop", max) {
+      display: flex;
+    }
+  }
+}
+
+.categories-popup__steps-label {
+  width: 219px;
+  margin: 0;
+  color: $color-neutral-700;
+  font-family: $main-medium;
+  font-weight: $font-weight-medium;
+  font-size: 18px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.categories-popup__steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  width: 100%;
+}
+
+.categories-popup__step {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid $color-neutral-300;
+  border-radius: 12px;
+  background: $color-neutral-100;
+  color: $color-brand-900;
+  text-align: left;
+  @include shadow-card-s;
+
+  &.is-active {
+    border-color: $color-neutral-200;
+    background: $color-neutral-900;
+    color: $color-neutral-100;
+  }
+}
+
+.categories-popup__step-number {
+  position: relative;
+  flex-shrink: 0;
+  width: 42px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.categories-popup__step-number-text {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  color: $color-neutral-600;
+  font-family: $main-medium;
+  font-weight: $font-weight-medium;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -0.76px;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.categories-popup__step-title {
+  font-family: $main-bold;
+  font-weight: $font-weight-bold;
+  font-size: 18px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.categories-popup__close {
+  display: none;
+  align-self: flex-end;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin: 0 14px 12px 0;
+  padding: 0;
+  border: 0;
+  background: none;
+
+  .categories-popup.is-open & {
+    @include mq("laptop", max) {
+      display: block;
+    }
+  }
+
+  img {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.categories {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  width: 100%;
+}
+
+.categories__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  @include mq("tablet") {
+    gap: 12px;
+  }
+}
+
+.categories__title {
+  width: 100%;
+  margin: 0;
+  color: $color-neutral-900;
+  font-family: $main-bold;
+  font-weight: $font-weight-bold;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  @include mq("laptop") {
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.1;
+  }
+}
