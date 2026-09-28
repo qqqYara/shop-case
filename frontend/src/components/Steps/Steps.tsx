@@ -1,30 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { Button } from "@/components/Button";
-import {
-  useCategoriesPopup,
-  type PopupStepId,
-} from "@/components/Categories/CategoriesPopup";
+import { StepCard, type StepCardProps } from "@/components/StepCard";
 import { useStackedCards } from "./useStackedCards";
 import "./Steps.scss";
 
-type StepVariant = "cleanse" | "treat" | "moisturise" | "protect";
-
-type Step = {
-  number: string;
-  title: string;
-  tagline: string;
-  description: string;
-  cta: string;
-  image: string;
-  imageWidth: number;
-  imageHeight: number;
-  imageAlt: string;
-  variant: StepVariant;
-};
-
-const STEPS: Step[] = [
+const STEPS: StepCardProps[] = [
   {
     number: "01",
     title: "Cleanse",
@@ -79,25 +60,6 @@ const STEPS: Step[] = [
   },
 ];
 
-function StepCta({ label, stepId }: { label: string; stepId: PopupStepId }) {
-  const { open } = useCategoriesPopup();
-
-  return (
-    <>
-      <Button
-        variant="cta"
-        className="step-card__open"
-        onClick={() => open(stepId)}
-      >
-        {label}
-      </Button>
-      <Button variant="cta" className="step-card__link" href="#">
-        {label}
-      </Button>
-    </>
-  );
-}
-
 export function Steps() {
   const listRef = useRef<HTMLOListElement>(null);
 
@@ -106,33 +68,7 @@ export function Steps() {
   return (
     <ol className="steps" ref={listRef}>
       {STEPS.map((step) => (
-        <li
-          key={step.number}
-          className={`step-card step-card--${step.variant}`}
-        >
-          <div className="step-card__content">
-            <div className="step-card__heading">
-              <div className="step-card__title-row">
-                <span className="step-card__number" aria-hidden="true">
-                  <span className="step-card__number-text">{step.number}</span>
-                </span>
-                <h3 className="step-card__title">{step.title}</h3>
-              </div>
-              <p className="step-card__tagline">{step.tagline}</p>
-            </div>
-            <p className="step-card__description">{step.description}</p>
-            <StepCta label={step.cta} stepId={step.variant} />
-          </div>
-          <div className="step-card__image-wrap">
-            <img
-              className="step-card__image"
-              src={step.image}
-              alt={step.imageAlt}
-              width={step.imageWidth}
-              height={step.imageHeight}
-            />
-          </div>
-        </li>
+        <StepCard key={step.number} {...step} />
       ))}
     </ol>
   );
