@@ -10,33 +10,26 @@
   border: 1px solid $color-neutral-200;
   border-radius: 200px;
   @include shadow-card-s;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
   @include mq("tablet") {
     gap: 24px;
-  }
-
-  @include mq("desktop", max) {
-    max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    scrollbar-color: transparent transparent;
   }
 
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-track,
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-corner {
-    @include mq("desktop", max) {
-      background: transparent;
-      background-color: transparent;
-    }
+    background: transparent;
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar {
-    @include mq("desktop", max) {
-      display: none;
-      width: 0;
-      height: 0;
-    }
+    display: none;
+    width: 0;
+    height: 0;
   }
 }
 

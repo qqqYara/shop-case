@@ -15,6 +15,19 @@ type ProductListProps = {
 };
 
 export function ProductList({ products }: ProductListProps) {
+  if (products.length === 0) {
+    return (
+      <div className="product-list product-list--empty">
+        <div className="product-list__empty" role="status">
+          <p className="product-list__empty-title">No products yet</p>
+          <p className="product-list__empty-text">
+            This category is empty. Try another one.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="product-list">
       <Swiper
