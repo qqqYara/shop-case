@@ -4,13 +4,15 @@
 .product-list {
   width: 100%;
   padding-top: 16px;
-  overflow: hidden;
 
   &--empty {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    min-height: 280px;
+    min-height: 362px;
+    @include mq("tablet") {
+      min-height: 632px;
+    }
   }
 }
 
@@ -48,9 +50,25 @@
   line-height: 1.4;
 }
 
-.product-list__slider {
-  width: 100%;
+// Padding + negative margin enlarge Swiper's overflow clip so card shadows
+// fit without shifting the slides. Top bleed must not exceed the list's
+// padding-top (it would overlap the menu), mobile side bleed must stay
+// within the 14px padding of the scrollable categories popup, and on
+// desktop slides must not pass the right edge of .how-it-works__inner.
+.product-list__slider.swiper {
+  --shadow-bleed-left: 14px;
+  --shadow-bleed-right: 14px;
+
+  width: auto;
   height: 100%;
+  margin: -16px calc(var(--shadow-bleed-right) * -1) -40px
+    calc(var(--shadow-bleed-left) * -1);
+  padding: 16px var(--shadow-bleed-right) 40px var(--shadow-bleed-left);
+
+  @include mq("laptop") {
+    --shadow-bleed-left: 28px;
+    --shadow-bleed-right: 0px;
+  }
 
   .swiper-slide {
     width: 160px;
